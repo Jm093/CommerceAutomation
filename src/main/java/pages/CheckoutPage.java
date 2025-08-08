@@ -30,23 +30,27 @@ public class CheckoutPage {
     @FindBy(css = ".button-1.order-completed-continue-button") WebElement continueSuccessPage;
 
     public void fillBillingAddress(String fname, String lname, String email, String country, String city, String address, String zip, String phoneNo){
-        if (!cityField.getAttribute("value").isEmpty()) {
+        Select select = new Select(countryDropdown);
+        if (!select.getFirstSelectedOption().getText().equals(country)){
+            select.selectByVisibleText(country);
+        }
+        if (cityField.getAttribute("value").isEmpty()) {
             cityField.clear();
             cityField.sendKeys(city);
         }
-        if (!address1Field.getAttribute("value").isEmpty()){
+        if (address1Field.getAttribute("value").isEmpty()){
             address1Field.clear();
             address1Field.sendKeys(address);
         }
-        if (!zipField.getAttribute("value").isEmpty()){
+        if (zipField.getAttribute("value").isEmpty()){
             zipField.clear();
             zipField.sendKeys(zip);
         }
-        if (!phoneNoField.getAttribute("value").isEmpty()){
+        if (phoneNoField.getAttribute("value").isEmpty()){
             phoneNoField.clear();
             phoneNoField.sendKeys(phoneNo);
         }
-        if (!firstNameField.getAttribute("value").isEmpty()){
+        if (firstNameField.getAttribute("value").isEmpty()){
             firstNameField.clear();
             firstNameField.sendKeys(fname);
         }
@@ -58,10 +62,7 @@ public class CheckoutPage {
             emailField.clear();
             emailField.sendKeys(email);
         }
-        Select select = new Select(countryDropdown);
-        if (!select.getFirstSelectedOption().getText().equals(country)){
-            select.selectByVisibleText(country);
-        }
+
     }
 
     public void clickContinue(){

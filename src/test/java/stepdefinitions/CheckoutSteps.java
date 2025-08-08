@@ -105,26 +105,32 @@ public class CheckoutSteps {
                 data.get("ZipCode"),
                 data.get("PhoneNo")
         );
+        checkoutPage.clickContinue();
     }
 
-    @And("the user has selected the Shipping method")
-    public void theUserHasSelectedTheShippingMethod() {
-        checkoutPage.selectShippingMethod("Next Day Air");
+    @And("the user has selected the Shipping method as {string}")
+    public void theUserHasSelectedTheShippingMethod(String method) {
+        checkoutPage.selectShippingMethod(method);
     }
 
-    @And("the user has selected the Payment method")
-    public void theUserHasSelectedThePaymentMethod() {
+    @And("the user has selected the Payment method as {string}")
+    public void theUserHasSelectedThePaymentMethod(String method) {
+        checkoutPage.selectPaymentMethod(method);
     }
 
-    @And("the user has selected the Payment information")
-    public void theUserHasSelectedThePaymentInformation() {
+    @And("the user has confirmed the Payment information")
+    public void theUserHasConfirmedThePaymentInformation() {
+        checkoutPage.confirmPaymentInformation();
     }
 
     @And("the user has confirmed the order")
     public void theUserHasConfirmedTheOrder() {
+        checkoutPage.confirmOrder();
     }
 
     @Then("the user should be redirected to order confirmed page")
     public void theUserShouldBeRedirectedToOrderConfirmedPage() {
+        checkoutPage.continueAtSuccessPage();
     }
+
 }

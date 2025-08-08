@@ -9,6 +9,7 @@ import org.openqa.selenium.safari.SafariDriver;
 import utils.ConfigReader;
 import java.time.Duration;
 
+
 public class DriverFactory {
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
@@ -20,6 +21,14 @@ public class DriverFactory {
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
                     chromeOptions.setExperimentalOption("useAutomationExtension", false);
+                    chromeOptions.addArguments("--disable-blink-features=AutomationControlled");
+                    chromeOptions.addArguments("--disable-infobars");
+                    chromeOptions.addArguments("--no-sandbox");
+                    chromeOptions.addArguments("--disable-dev-shm-usage");
+                    chromeOptions.addArguments("--remote-allow-origins=*");
+                    chromeOptions.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
+                            "AppleWebKit/537.36 (KHTML, like Gecko) " +
+                            "Chrome/115.0.0.0 Safari/537.36");
                     chromeOptions.addArguments("--start-maximized");
                     driver.set(new ChromeDriver(chromeOptions));
                     break;
