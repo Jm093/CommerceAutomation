@@ -7,7 +7,7 @@ import utils.ConfigReader;
 
 public class HomePage {
     WebDriver driver;
-    String pageURL ="https://demo.nopcommerce.com/";
+    String pageURL = ConfigReader.getBaseURL();
 
     public HomePage(WebDriver driver){
         this.driver = driver;

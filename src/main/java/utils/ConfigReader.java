@@ -23,7 +23,7 @@ public class ConfigReader {
         return System.getProperty("browser", properties.getProperty("browser","chrome"));
     }
     public static String getBaseURL(){
-        return properties.getProperty("baseURL");
+        return properties.getProperty("baseUrl");
     }
     public static int getImplicitWait(){
         return Integer.parseInt(properties.getProperty("implicitWait","10"));
