@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import context.TestContext;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,14 +13,14 @@ import pages.HomePage;
 import net.datafaker.Faker;
 
 public class Registration {
-    WebDriver driver;
+    TestContext context;
     RegistrationPage registrationPage;
     HomePage homePage;
 
-    public Registration(){
-        this.driver = DriverFactory.getDriver();
-        registrationPage = new RegistrationPage(driver);
-        homePage = new HomePage(driver);
+    public Registration(TestContext context){
+        this.context = context;
+        registrationPage = context.registrationPage();
+        homePage = context.homePage();
     }
 
     @Given("the user is in the registration page")

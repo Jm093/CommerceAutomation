@@ -8,6 +8,7 @@ import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
 
+
    @Before
    public void setUp(Scenario scenario){
        System.out.println("Starting:" + scenario.getName());
