@@ -1,14 +1,12 @@
-package stepdefinitions;
+package stepDefinitions;
 
 import context.TestContext;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.RegistrationPage;
-import managers.DriverFactory;
 import pages.HomePage;
 import net.datafaker.Faker;
 

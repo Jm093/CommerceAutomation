@@ -21,6 +21,10 @@ public class DriverFactory {
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
                     chromeOptions.setExperimentalOption("useAutomationExtension", false);
+                    chromeOptions.addArguments("--headless=new");
+                    chromeOptions.addArguments("--disable-gpu");
+                    chromeOptions.addArguments("--no-sandbox");
+                    chromeOptions.addArguments("--disable-dev-shm-usage");
                     chromeOptions.addArguments("--disable-blink-features=AutomationControlled");
                     chromeOptions.addArguments("--disable-infobars");
                     chromeOptions.addArguments("--no-sandbox");

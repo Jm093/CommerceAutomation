@@ -1,3 +1,5 @@
+![Build Status](https://github.com/<YourUsername>/<RepoName>/actions/workflows/maven.yml/badge.svg)
+
 # CommerceAutomation
 
 This is a Selenium-based automation project for testing key user flows in a nopCommerce website.

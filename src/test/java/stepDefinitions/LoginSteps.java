@@ -1,4 +1,4 @@
-package stepdefinitions;
+package stepDefinitions;
 import context.TestContext;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
