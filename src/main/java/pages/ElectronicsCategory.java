@@ -3,7 +3,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
+import org.openqa.selenium.support.ui.Wait;
+import utils.WaitUtils;
 
 public class ElectronicsCategory {
     WebDriver driver;
@@ -19,8 +20,11 @@ public class ElectronicsCategory {
 
     String productName;
 
-    public void selectPhoneCategory(){cellphoneCategory.click();}
+    public void selectPhoneCategory(){
+        WaitUtils.waitForClickable(cellphoneCategory);
+        cellphoneCategory.click();}
     public String getProductName(){
+        WaitUtils.waitForVisibility(samsungPhone);
         return productName = samsungPhone.getText().trim();
     }
     public void addPhoneToCart(){

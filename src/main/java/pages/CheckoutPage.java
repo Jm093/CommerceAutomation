@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import java.util.List;
+import utils.WaitUtils;
 
 public class CheckoutPage {
     WebDriver driver;
@@ -30,6 +31,7 @@ public class CheckoutPage {
     @FindBy(css = ".button-1.order-completed-continue-button") WebElement continueSuccessPage;
 
     public void fillBillingAddress(String fname, String lname, String email, String country, String city, String address, String zip, String phoneNo){
+        WaitUtils.waitForVisibility(firstNameField);
         Select select = new Select(countryDropdown);
         if (!select.getFirstSelectedOption().getText().equals(country)){
             select.selectByVisibleText(country);

@@ -3,7 +3,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Wait;
 import utils.ConfigReader;
+import utils.WaitUtils;
 
 public class HomePage {
     WebDriver driver;
@@ -24,11 +26,25 @@ public class HomePage {
     public void navigateToPage(){
         driver.get(pageURL);
     }
-    public void clickLoginPage(){loginPortal.click();}
-    public void clickLogout(){logoutBtn.click();}
-    public void clickElectronicsCategory(){electronicsPortal.click();}
-    public void cart(){cartPortal.click();}
-    public void clickRegisterPage(){registrationPortal.click();}
+    public void clickLoginPage(){
+        WaitUtils.waitForClickable(loginPortal);
+        loginPortal.click();
+    }
+    public void clickLogout(){
+        logoutBtn.click();
+    }
+    public void clickElectronicsCategory(){
+        WaitUtils.waitForClickable(electronicsPortal);
+        electronicsPortal.click();
+    }
+    public void cart(){
+        WaitUtils.waitForClickable(cartPortal);
+        cartPortal.click();
+    }
+    public void clickRegisterPage(){
+        WaitUtils.waitForClickable(registrationPortal);
+        registrationPortal.click();
+    }
 
     public String getHomePageTextDisplay(){
         return homePageDisplay = homePageText.getText().trim();

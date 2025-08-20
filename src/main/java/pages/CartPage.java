@@ -3,6 +3,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Wait;
+import utils.WaitUtils;
 
 public class CartPage {
     WebDriver driver;
@@ -18,8 +20,10 @@ public class CartPage {
     String cartName;
 
     public String getProductNameInCart(){
+        WaitUtils.waitForVisibility(cartProductName);
         return cartName = cartProductName.getText().trim();
     }
-    public void agreeToTermsOfService(){ toscheckbox.click();}
+    public void agreeToTermsOfService(){
+        toscheckbox.click();}
     public void checkoutItems(){checkoutBtn.click();}
 }
