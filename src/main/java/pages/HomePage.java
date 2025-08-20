@@ -38,7 +38,7 @@ public class HomePage {
         electronicsPortal.click();
     }
     public void cart(){
-        WaitUtils.waitForClickable(cartPortal);
+        WaitUtils.waitForVisibility(cartPortal);
         cartPortal.click();
     }
     public void clickRegisterPage(){
