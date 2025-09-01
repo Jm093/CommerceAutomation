@@ -1,4 +1,5 @@
 package pages;
+import managers.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,11 +9,11 @@ import utils.ConfigReader;
 import utils.WaitUtils;
 
 public class HomePage {
-    WebDriver driver;
+    private WebDriver driver;
     String pageURL = ConfigReader.getBaseURL();
 
-    public HomePage(WebDriver driver){
-        this.driver = driver;
+    public HomePage(DriverFactory driverFactory){
+        this.driver = driverFactory.getDriver();
         PageFactory.initElements(driver, this);
     }
 

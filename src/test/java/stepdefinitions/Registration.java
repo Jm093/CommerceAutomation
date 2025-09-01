@@ -1,6 +1,4 @@
-package stepDefinitions;
-
-import context.TestContext;
+package stepdefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,14 +9,13 @@ import pages.HomePage;
 import net.datafaker.Faker;
 
 public class Registration {
-    TestContext context;
-    RegistrationPage registrationPage;
-    HomePage homePage;
 
-    public Registration(TestContext context){
-        this.context = context;
-        registrationPage = context.registrationPage();
-        homePage = context.homePage();
+    private final RegistrationPage registrationPage;
+    private final HomePage homePage;
+
+    public Registration(RegistrationPage registrationPage, HomePage homePage){
+        this.registrationPage = registrationPage;
+        this.homePage = homePage;
     }
 
     @Given("the user is in the registration page")

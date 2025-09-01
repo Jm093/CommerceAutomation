@@ -1,4 +1,5 @@
 package pages;
+import managers.DriverFactory;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -7,9 +8,9 @@ import org.openqa.selenium.support.ui.Wait;
 import utils.WaitUtils;
 
 public class ElectronicsCategory {
-    WebDriver driver;
-    public ElectronicsCategory(WebDriver driver){
-        this.driver=driver;
+    private WebDriver driver;
+    public ElectronicsCategory(DriverFactory driverFactory){
+        this.driver=driverFactory.getDriver();
         PageFactory.initElements(driver, this);
     }
 

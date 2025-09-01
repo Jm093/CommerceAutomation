@@ -1,4 +1,5 @@
 package pages;
+import managers.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WebDriver;
@@ -9,9 +10,9 @@ import java.util.List;
 import utils.WaitUtils;
 
 public class CheckoutPage {
-    WebDriver driver;
-    public CheckoutPage(WebDriver driver){
-        this.driver= driver;
+    private WebDriver driver;
+    public CheckoutPage(DriverFactory driverFactory){
+        this.driver= driverFactory.getDriver();
         PageFactory.initElements(driver, this);
     }
 
@@ -92,8 +93,8 @@ public class CheckoutPage {
                 option.click();
                 break;
             }
-        continuePaymentBtn.click();
         }
+        continuePaymentBtn.click();
     }
 
     public void confirmPaymentInformation(){
