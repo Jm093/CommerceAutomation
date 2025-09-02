@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import java.util.List;
+
+import org.openqa.selenium.support.ui.Wait;
 import utils.WaitUtils;
 
 public class CheckoutPage {
@@ -82,6 +84,7 @@ public class CheckoutPage {
                 break;
             }
         }
+        WaitUtils.waitForClickable(continueShippingMtdBtn);
         continueShippingMtdBtn.click();
     }
 
@@ -94,16 +97,20 @@ public class CheckoutPage {
                 break;
             }
         }
+        WaitUtils.waitForClickable(continuePaymentBtn);
         continuePaymentBtn.click();
     }
 
     public void confirmPaymentInformation(){
+        WaitUtils.waitForClickable(continuePaymentInfoBtn);
         continuePaymentInfoBtn.click();
     }
     public void confirmOrder(){
+        WaitUtils.waitForClickable(confirmOrderBtn);
         confirmOrderBtn.click();
     }
     public void continueAtSuccessPage(){
+        WaitUtils.waitForClickable(continueSuccessPage);
         continueSuccessPage.click();
     }
 }

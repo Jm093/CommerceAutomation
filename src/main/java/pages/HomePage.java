@@ -23,7 +23,7 @@ public class HomePage {
     @FindBy(css = ".ico-cart") WebElement cartPortal;
     @FindBy(css = ".ico-register") WebElement registrationPortal;
     @FindBy(css = "div[class='topic-block-title'] h2") WebElement homePageText;
-    String homePageDisplay;
+
     public void navigateToPage(){
         driver.get(pageURL);
     }
@@ -32,6 +32,7 @@ public class HomePage {
         loginPortal.click();
     }
     public void clickLogout(){
+        WaitUtils.waitForClickable(logoutBtn);
         logoutBtn.click();
     }
     public void clickElectronicsCategory(){
@@ -48,7 +49,8 @@ public class HomePage {
     }
 
     public String getHomePageTextDisplay(){
-        return homePageDisplay = homePageText.getText().trim();
+        WaitUtils.waitForVisibility(homePageText);
+        return homePageText.getText().trim();
 
     }
 }

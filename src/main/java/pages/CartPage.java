@@ -27,6 +27,9 @@ public class CartPage {
         return cartName = cartProductName.getText().trim();
     }
     public void agreeToTermsOfService(){
+        WaitUtils.waitForClickable(toscheckbox);
         toscheckbox.click();}
-    public void checkoutItems(){checkoutBtn.click();}
+    public void checkoutItems(){
+        WaitUtils.waitForClickable(checkoutBtn);
+        checkoutBtn.click();}
 }

@@ -33,6 +33,7 @@ public class RegistrationPage {
         confirmPasswordRegistration.sendKeys(password);
     }
     public void clickRegisterBtn(){
+        WaitUtils.waitForClickable(registerBtn);
         registerBtn.click();
     }
     public String getSuccessfulRegistrationMessage(){

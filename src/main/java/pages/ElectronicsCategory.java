@@ -29,6 +29,7 @@ public class ElectronicsCategory {
         return productName = samsungPhone.getText().trim();
     }
     public void addPhoneToCart(){
+        WaitUtils.waitForClickable(samsungPhone);
         samsungPhone.click();
         samsungAddToCart.click();
     }
