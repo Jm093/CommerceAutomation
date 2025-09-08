@@ -1,8 +1,7 @@
 Feature: Login
 
   Background:
-    Given user is in the registration page
-    And user is registered
+    Given the user is registered
 
     Scenario: Valid Login
       Given the user is on the login page

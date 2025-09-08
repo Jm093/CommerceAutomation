@@ -3,7 +3,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.And;
-import net.datafaker.Faker;
 import org.testng.Assert;
 import pages.HomePage;
 import pages.LoginPage;
@@ -12,35 +11,14 @@ import pages.RegistrationPage;
 
 public class LoginSteps {
     private final HomePage homePage;
-    private final RegistrationPage registrationPage;
     private final LoginPage loginPage;
     String email;
     String password;
-    public LoginSteps(HomePage homePage, RegistrationPage registrationPage, LoginPage loginPage){
+    public LoginSteps(HomePage homePage, LoginPage loginPage){
         this.homePage = homePage;
-        this.registrationPage = registrationPage;
         this.loginPage = loginPage;
     }
 
-    @Given("user is in the registration page")
-    public void UserIsInTheRegistrationPage(){
-        homePage.navigateToPage();
-        homePage.clickRegisterPage();
-    }
-
-    @And("user is registered")
-    public void userIsRegistered() {
-        homePage.navigateToPage();
-        homePage.clickRegisterPage();
-        Faker faker = new Faker();
-        String firstName = faker.name().firstName();
-        String lastName = faker.name().lastName();
-        email = faker.internet().emailAddress();
-        password = "P@ssword01";
-        registrationPage.fillRegistration(firstName, lastName, email, password);
-        registrationPage.clickRegisterBtn();
-        homePage.clickLogout();
-    }
 
     @Given("the user is on the login page")
     public void theUserIsOnTheLoginPage(){
