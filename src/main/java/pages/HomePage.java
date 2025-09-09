@@ -1,9 +1,6 @@
 package pages;
 import managers.DriverFactory;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.ConfigReader;
@@ -12,6 +9,7 @@ import utils.WaitUtils;
 public class HomePage {
     private WebDriver driver;
     String pageURL = ConfigReader.getBaseURL();
+
 
     public HomePage(DriverFactory driverFactory){
         this.driver = driverFactory.getDriver();
@@ -82,7 +80,7 @@ public class HomePage {
         }
     }
     public void searchItem(String item){
-        WaitUtils.waitForVisibility(searchField);
+        WaitUtils.waitForClickable(searchField);
         searchField.sendKeys(item);
     }
     public void clickSearchBtn(){
