@@ -13,7 +13,7 @@ import utils.UserContext;
 public class LoginSteps {
     private final HomePage homePage;
     private final LoginPage loginPage;
-    private UserContext userContext;
+    private final UserContext userContext;
 
 
     public LoginSteps(HomePage homePage, LoginPage loginPage, UserContext userContext){

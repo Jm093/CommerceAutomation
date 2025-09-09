@@ -9,6 +9,7 @@ import org.testng.Assert;
 import java.util.Map;
 
 import pages.*;
+import utils.TestDataReader;
 import utils.UserContext;
 
 public class CheckoutSteps {
@@ -18,7 +19,7 @@ public class CheckoutSteps {
     private final CartPage cartPage;
     private final LoginPage loginPage;
     private final CheckoutPage checkoutPage;
-    private UserContext userContext;
+    private final UserContext userContext;
     String productName;
     String cartName;
 
@@ -39,7 +40,7 @@ public class CheckoutSteps {
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
         userContext.email = faker.internet().emailAddress();
-        userContext.password = "P@ssword01";
+        userContext.password = TestDataReader.get("login.password");
         registrationPage.fillRegistration(firstName, lastName, userContext.email, userContext.password);
         registrationPage.clickRegisterBtn();
         homePage.clickLogout();

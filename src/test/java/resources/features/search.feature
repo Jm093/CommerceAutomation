@@ -1,4 +1,4 @@
-Feature: Search & Filter
+Feature: Search
 
   Background:
     Given the user is registered
