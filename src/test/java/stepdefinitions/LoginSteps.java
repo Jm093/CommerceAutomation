@@ -7,16 +7,19 @@ import org.testng.Assert;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.RegistrationPage;
+import utils.UserContext;
 
 
 public class LoginSteps {
     private final HomePage homePage;
     private final LoginPage loginPage;
-    String email;
-    String password;
-    public LoginSteps(HomePage homePage, LoginPage loginPage){
+    private UserContext userContext;
+
+
+    public LoginSteps(HomePage homePage, LoginPage loginPage, UserContext userContext){
         this.homePage = homePage;
         this.loginPage = loginPage;
+        this.userContext = userContext;
     }
 
 
@@ -27,7 +30,7 @@ public class LoginSteps {
 
     @When("the user logs in with valid credentials")
     public void theUserLogsInWithValidCredentials() {
-        loginPage.login(email,password);
+        loginPage.login(userContext.email, userContext.password);
     }
 
     @Then("the user should be redirected to home page")
@@ -74,7 +77,7 @@ public class LoginSteps {
 
     @When("the user enters a valid email")
     public void theUserEntersAValidEmail() {
-        loginPage.enterRecoveryEmail(email);
+        loginPage.enterRecoveryEmail(userContext.email);
     }
 
     @And("submits the request")

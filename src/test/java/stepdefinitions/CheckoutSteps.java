@@ -9,6 +9,7 @@ import org.testng.Assert;
 import java.util.Map;
 
 import pages.*;
+import utils.UserContext;
 
 public class CheckoutSteps {
     private final HomePage homePage;
@@ -17,18 +18,18 @@ public class CheckoutSteps {
     private final CartPage cartPage;
     private final LoginPage loginPage;
     private final CheckoutPage checkoutPage;
-    String email;
-    String password;
+    private UserContext userContext;
     String productName;
     String cartName;
 
-    public CheckoutSteps(HomePage homePage, RegistrationPage registrationPage, LoginPage loginPage, ElectronicsCategory electronicsCategory, CartPage cartPage, CheckoutPage checkoutPage){
+    public CheckoutSteps(HomePage homePage, RegistrationPage registrationPage, LoginPage loginPage, ElectronicsCategory electronicsCategory, CartPage cartPage, CheckoutPage checkoutPage, UserContext userContext){
         this.homePage = homePage;
         this.registrationPage = registrationPage;
         this.electronicsCategory = electronicsCategory;
         this.cartPage = cartPage;
         this.loginPage = loginPage;
         this.checkoutPage = checkoutPage;
+        this.userContext = userContext;
     }
     @Given("the user is registered")
     public void theUserIsRegistered(){
@@ -37,9 +38,9 @@ public class CheckoutSteps {
         Faker faker = new Faker();
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
-        email = faker.internet().emailAddress();
-        password = "P@ssword01";
-        registrationPage.fillRegistration(firstName, lastName, email, password);
+        userContext.email = faker.internet().emailAddress();
+        userContext.password = "P@ssword01";
+        registrationPage.fillRegistration(firstName, lastName, userContext.email, userContext.password);
         registrationPage.clickRegisterBtn();
         homePage.clickLogout();
     }
@@ -47,7 +48,7 @@ public class CheckoutSteps {
     @And("the user is able to log in")
     public void theUserIsAbleToLogIn() {
         homePage.clickLoginPage();
-        loginPage.login(email, password);
+        loginPage.login(userContext.email, userContext.password);
     }
 
     @When("the user searches for cellphone")

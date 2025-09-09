@@ -1,6 +1,7 @@
 package pages;
 import managers.DriverFactory;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,7 +21,7 @@ public class HomePage {
     @FindBy(css = ".ico-login") WebElement loginPortal;
     @FindBy(css = ".ico-logout") WebElement logoutBtn;
     @FindBy(css = "img[title='Show products in category Electronics']") WebElement electronicsPortal;
-    @FindBy(css = ".ico-cart") WebElement cartPortal;
+    @FindBy(css = ".cart-label") WebElement cartPortal;
     @FindBy(css = ".ico-register") WebElement registrationPortal;
     @FindBy(css = "div[class='topic-block-title'] h2") WebElement homePageText;
     @FindBy(css = ".ico-account") WebElement accountInfo;
@@ -28,6 +29,7 @@ public class HomePage {
     @FindBy(css = "button[type='submit']") WebElement searchBtn;
     @FindBy(css = "h2[class='product-title'] a") WebElement searchedItem;
     @FindBy(css = ".no-result") WebElement noResultFoundMsg;
+    @FindBy(css = "span[title='Close']") WebElement notificationBarCloseBtn;
 
     public void navigateToPage(){
         driver.get(pageURL);
@@ -45,8 +47,15 @@ public class HomePage {
         electronicsPortal.click();
     }
     public void cart(){
-        WaitUtils.waitForVisibility(cartPortal);
+        try{
+            WaitUtils.waitForClickable(notificationBarCloseBtn);
+            notificationBarCloseBtn.click();
+        }catch (TimeoutException e){
+            // Notification did not appear. Continuing test.
+        }
+        WaitUtils.waitForClickable(cartPortal);
         cartPortal.click();
+
     }
     public void clickRegisterPage(){
         WaitUtils.waitForClickable(registrationPortal);
