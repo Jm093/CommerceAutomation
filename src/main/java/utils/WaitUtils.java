@@ -8,7 +8,7 @@ import java.time.Duration;
 
 public class WaitUtils {
     private static WebDriverWait getWait(){
-       return new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(10));
+       return new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(ConfigReader.getExplicitWait()));
     }
     public static void waitForVisibility (WebElement element){
         getWait().until(ExpectedConditions.visibilityOf(element));

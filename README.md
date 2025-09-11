@@ -139,3 +139,12 @@ The workflow file is located at:
 - ✅ Builds the project
 - ✅ Executes all test scenarios
 - ✅ Generates and stores test reports  
+
+## Project Notes
+
+⚠️ **Test Data Behavior**  
+The nopCommerce demo site automatically deletes registered users after ~10 minutes of inactivity.
+
+- To ensure reliability, each scenario includes a **fresh user registration + login** step.
+- This design avoids dependency on pre-registered accounts and keeps tests independent.
+- While this may appear repetitive in the scenarios, it reflects the constraints of the demo environment and ensures stable execution.

@@ -32,6 +32,8 @@ public class CheckoutPage {
     @FindBy(css = ".button-1.payment-info-next-step-button") WebElement continuePaymentInfoBtn;
     @FindBy(css = ".button-1.confirm-order-next-step-button") WebElement confirmOrderBtn;
     @FindBy(css = ".button-1.order-completed-continue-button") WebElement continueSuccessPage;
+    @FindBy(css = "div[class='section order-completed'] div[class='title'] strong") WebElement orderCompleteMsg;
+    @FindBy(css = "div[class='order-number'] strong") WebElement orderNumber;
 
     public void fillBillingAddress(String fname, String lname, String email, String country, String city, String address, String zip, String phoneNo){
         WaitUtils.waitForVisibility(firstNameField);
@@ -71,6 +73,7 @@ public class CheckoutPage {
     }
 
     public void clickContinue(){
+        WaitUtils.waitForClickable(continueBillingAddBtn);
         continueBillingAddBtn.click();
     }
 
@@ -112,5 +115,13 @@ public class CheckoutPage {
     public void continueAtSuccessPage(){
         WaitUtils.waitForClickable(continueSuccessPage);
         continueSuccessPage.click();
+    }
+    public String getSuccessOrderMsg(){
+        WaitUtils.waitForVisibility(orderCompleteMsg);
+        return orderCompleteMsg.getText().trim();
+    }
+
+    public boolean isOrderNumberVisible(){
+        return orderNumber.isDisplayed();
     }
 }

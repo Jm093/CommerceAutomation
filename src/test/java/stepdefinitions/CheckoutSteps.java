@@ -123,6 +123,10 @@ public class CheckoutSteps {
 
     @Then("the user should be redirected to order confirmed page")
     public void theUserShouldBeRedirectedToOrderConfirmedPage() {
+        String actualMsg = checkoutPage.getSuccessOrderMsg();
+        String expectedMsg = "Your order has been successfully processed!";
+        Assert.assertEquals(actualMsg,expectedMsg, "Order has not been completed");
+        Assert.assertTrue(checkoutPage.isOrderNumberVisible(),"No order number assigned, order incomplete");
         checkoutPage.continueAtSuccessPage();
     }
 

@@ -18,9 +18,12 @@ public class DriverFactory {
             switch (browser){
                 case "chrome":
                     ChromeOptions chromeOptions = new ChromeOptions();
+                    String headless = ConfigReader.get("headless");
+                    if (headless != null && headless.equalsIgnoreCase("true")) {
+                        chromeOptions.addArguments("--headless=new");
+                    }
                     chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
                     chromeOptions.setExperimentalOption("useAutomationExtension", false);
-                    chromeOptions.addArguments("--headless=new");
                     chromeOptions.addArguments("--disable-gpu");
                     chromeOptions.addArguments("--no-sandbox");
                     chromeOptions.addArguments("--disable-dev-shm-usage");
