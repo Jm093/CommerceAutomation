@@ -11,15 +11,15 @@ public class WaitUtils {
        return new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(ConfigReader.getExplicitWait()));
     }
     public static void waitForVisibility (WebElement element){
-        getWait().until(ExpectedConditions.visibilityOf(element));
+        getWait().until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
     }
     public static void waitForClickable (WebElement element){
-        getWait().until(ExpectedConditions.elementToBeClickable(element));
+        getWait().until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
     }
     public static void waitForTextToBePresent (WebElement element, String text){
-        getWait().until(ExpectedConditions.textToBePresentInElement(element,text));
+        getWait().until(ExpectedConditions.refreshed(ExpectedConditions.textToBePresentInElement(element,text)));
     }
     public static void waitForAlert (){
-        getWait().until(ExpectedConditions.alertIsPresent());
+        getWait().until(ExpectedConditions.refreshed(ExpectedConditions.alertIsPresent()));
     }
 }
