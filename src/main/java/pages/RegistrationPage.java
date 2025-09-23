@@ -7,10 +7,12 @@ import org.openqa.selenium.support.PageFactory;
 import utils.WaitUtils;
 
 public class RegistrationPage {
-    WebDriver driver;
+    private WebDriver driver;
+    private WaitUtils WaitUtils = new WaitUtils(driver);
 
     public RegistrationPage(DriverFactory driverFactory){
         this.driver = driverFactory.getDriver();
+        this.WaitUtils = new WaitUtils(driver);
         PageFactory.initElements(driver, this);
     }
 

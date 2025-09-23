@@ -8,8 +8,10 @@ import utils.WaitUtils;
 
 public class CartPage {
     private WebDriver driver;
+    private WaitUtils WaitUtils; 
     public CartPage(DriverFactory driverFactory){
         this.driver = driverFactory.getDriver();
+        this.WaitUtils = new WaitUtils(driver);
         PageFactory.initElements(driver, this);
     }
 

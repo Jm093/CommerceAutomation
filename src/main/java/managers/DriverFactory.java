@@ -81,7 +81,7 @@ public class DriverFactory {
         }
 
     }
-    public static WebDriver getDriver(){
+    public WebDriver getDriver(){
 
         if (driver.get() == null){
             throw new IllegalArgumentException("Driver not initialized. Call initializeDriver() first.");
@@ -90,7 +90,7 @@ public class DriverFactory {
             return driver.get();
         }
     }
-    public static void quitDriver(){
+    public void quitDriver(){
         if (driver.get() != null){
             driver.get().quit();
             driver.remove();

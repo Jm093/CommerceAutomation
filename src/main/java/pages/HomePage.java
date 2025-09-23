@@ -8,11 +8,12 @@ import utils.WaitUtils;
 
 public class HomePage {
     private WebDriver driver;
+    private WaitUtils WaitUtils = new WaitUtils(driver);
     String pageURL = ConfigReader.getBaseURL();
-
 
     public HomePage(DriverFactory driverFactory){
         this.driver = driverFactory.getDriver();
+        this.WaitUtils = new WaitUtils(driver);
         PageFactory.initElements(driver, this);
     }
 

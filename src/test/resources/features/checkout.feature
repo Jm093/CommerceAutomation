@@ -8,7 +8,7 @@ Feature: Checkout
     When the user searches for cellphone
     And adds the item to cart
     Then the cart should show the added item
-
+    
   Scenario Outline: Checkout the items in cart
     Given that an item is added to the cart
     When the user has agreed to TOS and clicked the checkout button

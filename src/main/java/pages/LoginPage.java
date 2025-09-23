@@ -10,9 +10,11 @@ import utils.WaitUtils;
 
 public class LoginPage {
     private WebDriver driver;
+    private WaitUtils WaitUtils;
 
     public LoginPage(DriverFactory driverFactory){
         this.driver=driverFactory.getDriver();
+        this.WaitUtils = new WaitUtils(driver);
         PageFactory.initElements(driver, this);
     }
 

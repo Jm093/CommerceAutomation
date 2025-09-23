@@ -6,7 +6,6 @@ import io.cucumber.java.en.And;
 import org.testng.Assert;
 import pages.HomePage;
 import pages.LoginPage;
-import pages.RegistrationPage;
 import utils.UserContext;
 
 

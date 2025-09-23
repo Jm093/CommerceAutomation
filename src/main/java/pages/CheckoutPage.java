@@ -8,13 +8,14 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
-import org.openqa.selenium.support.ui.Wait;
 import utils.WaitUtils;
 
 public class CheckoutPage {
     private WebDriver driver;
+    private WaitUtils WaitUtils;
     public CheckoutPage(DriverFactory driverFactory){
         this.driver= driverFactory.getDriver();
+        this.WaitUtils = new WaitUtils(driver);
         PageFactory.initElements(driver, this);
     }
 
