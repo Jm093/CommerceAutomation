@@ -148,3 +148,25 @@ The nopCommerce demo site automatically deletes registered users after ~10 minut
 - To ensure reliability, each scenario includes a **fresh user registration + login** step.
 - This design avoids dependency on pre-registered accounts and keeps tests independent.
 - While this may appear repetitive in the scenarios, it reflects the constraints of the demo environment and ensures stable execution.
+
+⚠️ **Browser Flags**
+Certain ChromeOptions flags are included *only* to bypass anti-bot checks on the nopCommerce demo site.  
+- These flags (e.g., disabling automation detection, setting a custom user-agent) are **not best practice** for production-grade test automation.  
+- In a real-world company application, these would be removed to keep tests closer to actual user behavior.
+
+🛠️ **Design Choices**
+- Uses Dependency Injection (Cucumber PicoContainer) for cleaner test isolation.  
+- `DriverFactory` manages browser instances with `ThreadLocal<WebDriver>` to support parallel execution.  
+- Allure integrated for reporting, with screenshots captured on failure.  
+
+🔄 **Continuous Integration**
+- GitHub Actions pipeline runs tests on headless Chrome (to work in CI environments without a GUI).  
+- CI currently pinned to Java 17 for library compatibility. Upgrade to Java 21 is straightforward once dependencies allow.  
+
+🎯 **Project Purpose**
+This project was created as a practice framework to showcase:
+- UI automation with modern tools (Selenium, Cucumber, TestNG, Allure).  
+- CI/CD integration with GitHub Actions.  
+- Best practices such as Page Object Model, config management, and externalized test data.  
+
+While the application under test is a demo site, the framework structure is production-ready and demonstrates transferable skills for enterprise projects.

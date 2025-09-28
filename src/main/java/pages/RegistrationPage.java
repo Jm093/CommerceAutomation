@@ -8,7 +8,7 @@ import utils.WaitUtils;
 
 public class RegistrationPage {
     private WebDriver driver;
-    private WaitUtils WaitUtils = new WaitUtils(driver);
+    private WaitUtils WaitUtils;
 
     public RegistrationPage(DriverFactory driverFactory){
         this.driver = driverFactory.getDriver();

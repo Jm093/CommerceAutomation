@@ -14,9 +14,9 @@ import utils.ConfigReader;
 public class DriverFactory {
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    public static void initializeDriver(){
+    public void initializeDriver(){
         String browser = ConfigReader.getBrowser().toLowerCase();
-        if (driver.get() == null){
+        if (driver.get() == null){     
             switch (browser){
                 case "chrome":
                     ChromeOptions chromeOptions = new ChromeOptions();
